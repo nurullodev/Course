@@ -1,3 +1,3 @@
 # Online Learning Management System 
 
-![diagram](https://github.com/NurulloNurmatov/Course/assets/122158864/233a9975-976f-4005-b514-52570e009e01)
+![diagram](https://github.com/NurulloNurmatov/Course/assets/122158864/d0b11fd4-4e60-4539-af51-f5f74039af8f)

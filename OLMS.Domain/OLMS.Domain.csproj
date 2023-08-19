@@ -6,11 +6,4 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\Courses\" />
-    <Folder Include="Entities\Lessons\" />
-    <Folder Include="Entities\Users\" />
-    <Folder Include="Entities\Teachers\" />
-  </ItemGroup>
-
 </Project>

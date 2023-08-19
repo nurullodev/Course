@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OLMS.Domain.Commons;
 
-namespace OLMS.Domain.Entities.Lessons
+namespace OLMS.Domain.Entities.Lessons;
+
+public class Assigment : Auditable
 {
-    internal class Assigment
-    {
-    }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public short Term { get;set; }
+    public long LessonId { get; set; }
+    public Lesson Lesson { get; set; }
 }

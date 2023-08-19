@@ -11,6 +11,7 @@ public class User : Auditable
     public string Email { get; set; }
     public string Phone { get; set; }
     public DateTime DateOfBirth { get; set; }
+    public double CoursePayment { get; set; }
     public long CourseId { get; set; }
-    public Course Course { get; set; }
+    public Course? Course { get; set; }
 }

@@ -15,7 +15,7 @@ public class Course : Auditable
 
     public ICollection<Lesson> Lessons { get; set; }
 
-    public long CourseId { get; set; }
+    public long CategoryId { get; set; }
     public CourseCategory CourseCategory { get; set; }
 
     public long TeacherId { get; set; }

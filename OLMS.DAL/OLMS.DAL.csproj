@@ -1,9 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>eable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="IRepositories\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
 
 </Project>

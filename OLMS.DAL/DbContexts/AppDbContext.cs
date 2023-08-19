@@ -2,5 +2,4 @@
 
 public class AppDbContext
 {
-    public string Name { get; set; }
 }

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OLMS.Domain", "OLMS.Domain\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OLMS.Service", "OLMS.Service\OLMS.Service.csproj", "{2B81403F-54B1-41F7-969E-796D494CFC3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OLMS.API", "OLMS.API\OLMS.API.csproj", "{B0EC31C5-9FE6-479F-8126-0582BBA8B4D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2B81403F-54B1-41F7-969E-796D494CFC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B81403F-54B1-41F7-969E-796D494CFC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B81403F-54B1-41F7-969E-796D494CFC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0EC31C5-9FE6-479F-8126-0582BBA8B4D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0EC31C5-9FE6-479F-8126-0582BBA8B4D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0EC31C5-9FE6-479F-8126-0582BBA8B4D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0EC31C5-9FE6-479F-8126-0582BBA8B4D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

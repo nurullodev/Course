@@ -1,4 +1,6 @@
-﻿namespace OLMS.Service.DTOs.Users;
+﻿using OLMS.Service.DTOs.Courses;
+
+namespace OLMS.Service.DTOs.Users;
 
 public class UserResultDto
 {
@@ -9,5 +11,5 @@ public class UserResultDto
     public string Phone { get; set; }
     public DateTime DateOfBirth { get; set; }
     public double CoursePayment { get; set; }
-    public CourseResultDot Course { get; set; }
+    public CourseResultDto Course { get; set; }
 }

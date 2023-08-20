@@ -13,6 +13,7 @@ public interface IRepository<T> where T : Auditable
     void Update(T entity);
     void Delete(T entity);
     void Destroy(T entity);
-    ValueTask<T> GetAsync(Expression<Func<T, bool>> expression, string[] includes);
-    IQueryable<T> GetAll(Expression<Func<T, bool>> expression, bool isNoTracked = true, string[] includes = null);
+    ValueTask<T> SelectAsync(Expression<Func<T, bool>> expression, string[] includes = null);
+    IQueryable<T> SelectAll(Expression<Func<T, bool>> expression, bool isNoTracked = true, string[] includes = null);
+    ValueTask SaveAsync();
 }

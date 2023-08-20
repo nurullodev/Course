@@ -7,9 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Services\**" />
-    <EmbeddedResource Remove="Services\**" />
-    <None Remove="Services\**" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OLMS.DAL\OLMS.DAL.csproj" />
+    <ProjectReference Include="..\OLMS.Domain\OLMS.Domain.csproj" />
   </ItemGroup>
 
 </Project>

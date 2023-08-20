@@ -42,26 +42,31 @@ public class Repository<T> : IRepository<T> where T : Auditable
         this.dbContext.Remove(entity);
     }
 
-    public async ValueTask<T> GetAsync(Expression<Func<T, bool>> expression, string[] includes)
+    public async ValueTask<T> SelectAsync(Expression<Func<T, bool>> expression, string[] includes = null)
     {
         IQueryable<T> query = expression is null ? dbSet.AsQueryable() : dbSet.Where(expression).AsQueryable();
-        
-        foreach (var include in includes)
-            query = query.Include(include);
+        if (includes is not null)
+            foreach (var include in includes)
+                query = query.Include(include);
 
         var entity = await query.FirstOrDefaultAsync(expression);
         return entity;
     }
 
-    public IQueryable<T> GetAll(Expression<Func<T, bool>> expression, bool isNoTracked = true, string[] includes = null)
+    public IQueryable<T> SelectAll(Expression<Func<T, bool>> expression, bool isNoTracked = true, string[] includes = null)
     {
         IQueryable<T> query = expression is null ? dbSet.AsQueryable() : dbSet.Where(expression).AsQueryable();
         
         query = isNoTracked ? query.AsNoTracking() : query;
-        
-        foreach(var include in includes)
-            query = query.Include(include);
+        if (includes is not null)
+            foreach (var include in includes)
+                query = query.Include(include);
 
         return query;
+    }
+
+    public async ValueTask SaveAsync()
+    {
+        await this.dbContext.SaveChangesAsync();
     }
 }

@@ -18,5 +18,4 @@ public interface IUnitOfWork : IDisposable
     IRepository<Lesson> LessonRepository { get; }
     IRepository<Quiz> QuizRepository { get; }
     IRepository<Assigment> AssigmentRepository { get; }
-    Task SaveAsync();
 }

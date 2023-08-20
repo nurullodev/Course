@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace OLMS.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class creationMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -196,37 +196,37 @@ namespace OLMS.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "CourseCategories",
                 columns: new[] { "Id", "CreatedAt", "IsDeleted", "Name", "UpdatedAt" },
-                values: new object[] { 1L, new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2430), false, "Programming", null });
+                values: new object[] { 1L, new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(3955), false, "Programming", null });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "CreatedAt", "Description", "Experience", "FirstName", "IsDeleted", "LastName", "Phone", "Salary", "UpdatedAt" },
-                values: new object[] { 1L, new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2900), "Very good teacher", "4 yil", "Aqilbek", false, "Aqilov", "+998992002526", 50000751.0, null });
+                values: new object[] { 1L, new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4178), "Very good teacher", "4 yil", "Aqilbek", false, "Aqilov", "+998992002526", 50000751.0, null });
 
             migrationBuilder.InsertData(
                 table: "Courses",
                 columns: new[] { "Id", "CategoryId", "CourseCategoryId", "CreatedAt", "Description", "IsDeleted", "Name", "Price", "ShortDescription", "TeacherId", "UpdatedAt" },
-                values: new object[] { 1L, 1L, null, new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2796), "This course is very good", false, ".net", 2000000.0, "Good", 1L, null });
+                values: new object[] { 1L, 1L, null, new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4124), "This course is very good", false, ".net", 2000000.0, "Good", 1L, null });
 
             migrationBuilder.InsertData(
                 table: "Lessons",
                 columns: new[] { "Id", "CourseId", "CourseId1", "CreatedAt", "Description", "IsDeleted", "Name", "UpdatedAt" },
-                values: new object[] { 1L, 1L, null, new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2826), ". net ga kirish", false, "Kirish", null });
+                values: new object[] { 1L, 1L, null, new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4137), ". net ga kirish", false, "Kirish", null });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CourseId", "CoursePayment", "CreatedAt", "DateOfBirth", "Email", "FirstName", "IsDeleted", "LastName", "Phone", "UpdatedAt" },
-                values: new object[] { 1L, 1L, 50000751.0, new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2923), new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2922), null, "Krasavchik", false, "Ikromov", "+998992002526", null });
+                values: new object[] { 1L, 1L, 50000751.0, new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4193), new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4192), null, "Krasavchik", false, "Ikromov", "+998992002526", null });
 
             migrationBuilder.InsertData(
                 table: "Assigments",
                 columns: new[] { "Id", "CreatedAt", "Description", "IsDeleted", "LessonId", "Term", "Title", "UpdatedAt" },
-                values: new object[] { 1L, new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2870), "birichi mavzu boycha qoshimcha malumot topish!", false, 1L, (short)4, "read a documentation", null });
+                values: new object[] { 1L, new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4161), "birichi mavzu boycha qoshimcha malumot topish!", false, 1L, (short)4, "read a documentation", null });
 
             migrationBuilder.InsertData(
                 table: "Quizzes",
                 columns: new[] { "Id", "Answer", "CreatedAt", "IsDeleted", "LessonId", "Question", "UpdatedAt", "VariantOne", "VariantThree", "VariantTwo" },
-                values: new object[] { 1L, "Framework", new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2848), false, 1L, ". net nima ?", null, "Framework", "Programming language", "Library" });
+                values: new object[] { 1L, "Framework", new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4150), false, 1L, ". net nima ?", null, "Framework", "Programming language", "Library" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assigments_LessonId",

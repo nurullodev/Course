@@ -50,7 +50,7 @@ namespace OLMS.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2430),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(3955),
                             IsDeleted = false,
                             Name = "Programming"
                         });
@@ -109,7 +109,7 @@ namespace OLMS.DAL.Migrations
                         {
                             Id = 1L,
                             CategoryId = 1L,
-                            CreatedAt = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2796),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4124),
                             Description = "This course is very good",
                             IsDeleted = false,
                             Name = ".net",
@@ -158,7 +158,7 @@ namespace OLMS.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2870),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4161),
                             Description = "birichi mavzu boycha qoshimcha malumot topish!",
                             IsDeleted = false,
                             LessonId = 1L,
@@ -209,7 +209,7 @@ namespace OLMS.DAL.Migrations
                         {
                             Id = 1L,
                             CourseId = 1L,
-                            CreatedAt = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2826),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4137),
                             Description = ". net ga kirish",
                             IsDeleted = false,
                             Name = "Kirish"
@@ -262,7 +262,7 @@ namespace OLMS.DAL.Migrations
                         {
                             Id = 1L,
                             Answer = "Framework",
-                            CreatedAt = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2848),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4150),
                             IsDeleted = false,
                             LessonId = 1L,
                             Question = ". net nima ?",
@@ -315,7 +315,7 @@ namespace OLMS.DAL.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2900),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4178),
                             Description = "Very good teacher",
                             Experience = "4 yil",
                             FirstName = "Aqilbek",
@@ -376,8 +376,8 @@ namespace OLMS.DAL.Migrations
                             Id = 1L,
                             CourseId = 1L,
                             CoursePayment = 50000751.0,
-                            CreatedAt = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2923),
-                            DateOfBirth = new DateTime(2023, 8, 19, 21, 5, 19, 520, DateTimeKind.Utc).AddTicks(2922),
+                            CreatedAt = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4193),
+                            DateOfBirth = new DateTime(2023, 8, 20, 15, 41, 48, 352, DateTimeKind.Utc).AddTicks(4192),
                             FirstName = "Krasavchik",
                             IsDeleted = false,
                             LastName = "Ikromov",

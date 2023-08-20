@@ -41,11 +41,6 @@ public class UnitOfWork : IUnitOfWork
 
     public IRepository<CourseCategory> CourseCategoryRepository { get; }
 
-    public async Task SaveAsync()
-    {
-        await appDbContext.SaveChangesAsync();
-    }
-
     public void Dispose()
     {
         GC.SuppressFinalize(true);

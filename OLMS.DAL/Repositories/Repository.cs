@@ -1,36 +1,67 @@
-﻿using OLMS.DAL.IRepositories;
-using OLMS.Domain.Commons;
-using System;
+﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
+using OLMS.Domain.Commons;
+using OLMS.DAL.DbContexts;
+using OLMS.DAL.IRepositories;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace OLMS.DAL.Repositories;
 
 public class Repository<T> : IRepository<T> where T : Auditable
 {
-    public ValueTask CreateAsync(T entity)
+    private readonly AppDbContext dbContext;
+    private readonly DbSet<T> dbSet;
+
+    public Repository(AppDbContext appDbContext)
     {
-        throw new NotImplementedException();
+        this.dbContext = appDbContext;
+        dbSet = dbContext.Set<T>();
     }
 
-    public void Delete(T entity)
+    public async ValueTask CreateAsync(T entity)
     {
-        throw new NotImplementedException();
-    }
-
-    public IQueryable<T> GetAll(Expression<Func<bool, T>> expression, bool isNoTracked = true, string[] includes = null)
-    {
-        throw new NotImplementedException();
-    }
-
-    public ValueTask<T> GetAsync(Expression<Func<bool, T>> expression)
-    {
-        throw new NotImplementedException();
+        entity.CreatedAt = DateTime.UtcNow;
+        await this.dbSet.AddAsync(entity);  
     }
 
     public void Update(T entity)
     {
-        throw new NotImplementedException();
+        entity.UpdatedAt = DateTime.UtcNow;
+        this.dbContext.Entry(entity).State = EntityState.Modified;
+    }
+
+    public void Delete(T entity)
+    {
+        entity.IsDeleted = true;
+    }
+
+    public void Destroy(T entity)
+    {
+        this.dbContext.Remove(entity);
+    }
+
+    public async ValueTask<T> GetAsync(Expression<Func<T, bool>> expression, string[] includes)
+    {
+        IQueryable<T> query = expression is null ? dbSet.AsQueryable() : dbSet.Where(expression).AsQueryable();
+        
+        foreach (var include in includes)
+            query = query.Include(include);
+
+        var entity = await query.FirstOrDefaultAsync(expression);
+        return entity;
+    }
+
+    public IQueryable<T> GetAll(Expression<Func<T, bool>> expression, bool isNoTracked = true, string[] includes = null)
+    {
+        IQueryable<T> query = expression is null ? dbSet.AsQueryable() : dbSet.Where(expression).AsQueryable();
+        
+        query = isNoTracked ? query.AsNoTracking() : query;
+        
+        foreach(var include in includes)
+            query = query.Include(include);
+
+        return query;
     }
 }

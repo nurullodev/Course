@@ -68,7 +68,7 @@ public class TeacherService : ITeacherService
 
     public async ValueTask<IEnumerable<TeacherResultDto>> RetrieveAllAsync()
     {
-        IQueryable<Teacher> teachers = this.unitOfWork.TeacherRepository.SelectAll();
+        IQueryable<Teacher> teachers = this.unitOfWork.TeacherRepository.SelectAll().Where(t => !t.IsDeleted);
         var mapperTeacher = mapper.Map<IEnumerable<TeacherResultDto>>(teachers);
         return mapperTeacher;
     }

@@ -56,7 +56,7 @@ public class Repository<T> : IRepository<T> where T : Auditable
 
     public IQueryable<T> SelectAll(Expression<Func<T, bool>> expression = null, bool isNoTracked = true, string[] includes = null)
     {
-        IQueryable<T> query = expression is null ? dbSet.AsQueryable() : dbSet.Where(expression).AsQueryable();
+        IQueryable<T> query = expression is null ? dbSet.AsQueryable() : dbSet.Where(expression).AsQueryable().Where(t => !t.IsDeleted);
         
         query = isNoTracked ? query.AsNoTracking() : query;
         if (includes is not null)

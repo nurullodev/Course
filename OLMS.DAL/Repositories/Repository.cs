@@ -49,7 +49,8 @@ public class Repository<T> : IRepository<T> where T : Auditable
             foreach (var include in includes)
                 query = query.Include(include);
 
-        var entity = await query.FirstOrDefaultAsync(expression);
+        var sortQuery = query.Where(t => !t.IsDeleted);
+        var entity = await sortQuery.FirstOrDefaultAsync(expression);
         return entity;
     }
 

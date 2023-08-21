@@ -1,6 +1,5 @@
 ﻿using System;
 using OLMS.DAL.DbContexts;
-using OLMS.DAL.Repositories;
 using OLMS.DAL.IRepositories;
 using System.Threading.Tasks;
 using OLMS.Domain.Entities.Users;
@@ -9,7 +8,7 @@ using OLMS.Domain.Entities.Lessons;
 using OLMS.Domain.Entities.Teachers;
 using OLMS.Domain.Entities.CourseCategories;
 
-namespace OLMS.DAL.UOW;
+namespace OLMS.DAL.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {

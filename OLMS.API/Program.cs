@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using OLMS.DAL.DbContexts;
 using OLMS.DAL.IRepositories;
 using OLMS.DAL.Repositories;
-using OLMS.DAL.UOW;
 using OLMS.Service.Interfaces;
 using OLMS.Service.Mappers;
 using OLMS.Service.Services;

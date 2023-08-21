@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using OLMS.DAL.IRepositories;
-using OLMS.DAL.UOW;
-using OLMS.Domain.Entities.Teachers;
-using OLMS.Service.DTOs.Teachers;
 using OLMS.Service.Exceptions;
 using OLMS.Service.Interfaces;
+using OLMS.Service.DTOs.Teachers;
+using OLMS.Domain.Entities.Teachers;
 
 namespace OLMS.Service.Services;
 
@@ -12,6 +11,7 @@ public class TeacherService : ITeacherService
 {
     private readonly IMapper mapper;
     private readonly IUnitOfWork unitOfWork;
+
     public TeacherService(IMapper mapper, IUnitOfWork unitOfWork)
     {
         this.mapper = mapper;
@@ -32,23 +32,44 @@ public class TeacherService : ITeacherService
         return mapper.Map<TeacherResultDto>(mapperTeacher);
     }
 
-    public ValueTask<TeacherResultDto> ModifyAsync(TeacherCreationDto dto)
+    public async ValueTask<TeacherResultDto> ModifyAsync(TeacherUpdateDto dto)
     {
-        throw new NotImplementedException();
+        var existTeacher = await this.unitOfWork
+            .TeacherRepository.SelectAsync(t => t.Id.Equals(dto.Id));
+        if (existTeacher is null)
+            throw new NotFoundException($"This teacher is not found with Id = {dto.Id}");
+
+        var mapperTeacher = mapper.Map(dto, existTeacher);
+        this.unitOfWork.TeacherRepository.Update(mapperTeacher);
+        await this.unitOfWork.TeacherRepository.SaveAsync();
+
+        return mapper.Map<TeacherResultDto>(mapperTeacher);
     }
 
-    public ValueTask<bool> RemoveAsync(long id)
+    public async ValueTask<bool> RemoveAsync(long id)
     {
-        throw new NotImplementedException();
+        var existTeachr = await this.unitOfWork.TeacherRepository.SelectAsync(t => t.Id.Equals(id));
+        if (existTeachr is null)
+            throw new NotFoundException($"This teacher is not found with Id = {id}");
+        
+        this.unitOfWork.TeacherRepository.Delete(existTeachr);
+        await this.unitOfWork.TeacherRepository.SaveAsync();
+        return true;
     }
 
-    public ValueTask<IEnumerable<TeacherResultDto>> RetrieveAllAsync()
+    public async ValueTask<TeacherResultDto> RetrieveByIdAsync(long id)
     {
-        throw new NotImplementedException();
+        var existTeachr = await this.unitOfWork.TeacherRepository.SelectAsync(t => t.Id.Equals(id));
+        if (existTeachr is null)
+            throw new NotFoundException($"This teacher is not found with Id = {id}");
+        
+        return mapper.Map<TeacherResultDto>(existTeachr);
     }
 
-    public ValueTask<TeacherResultDto> RetrieveByIdAsync(long id)
+    public async ValueTask<IEnumerable<TeacherResultDto>> RetrieveAllAsync()
     {
-        throw new NotImplementedException();
+        IQueryable<Teacher> teachers = this.unitOfWork.TeacherRepository.SelectAll();
+        var mapperTeacher = mapper.Map<IEnumerable<TeacherResultDto>>(teachers);
+        return mapperTeacher;
     }
 }

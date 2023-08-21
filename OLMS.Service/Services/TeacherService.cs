@@ -59,7 +59,7 @@ public class TeacherService : ITeacherService
 
     public async ValueTask<TeacherResultDto> RetrieveByIdAsync(long id)
     {
-        var existTeachr = await this.unitOfWork.TeacherRepository.SelectAsync(t => t.Id.Equals(id));
+        var existTeachr = await this.unitOfWork.TeacherRepository.SelectAsync(t => t.Id.Equals(id) && !t.IsDeleted);
         if (existTeachr is null)
             throw new NotFoundException($"This teacher is not found with Id = {id}");
         

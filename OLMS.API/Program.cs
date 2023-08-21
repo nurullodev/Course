@@ -1,11 +1,7 @@
-using Microsoft.EntityFrameworkCore;
+using OLMS.API.Extentions;
 using OLMS.DAL.DbContexts;
-using OLMS.DAL.IRepositories;
-using OLMS.DAL.Repositories;
-using OLMS.Service.Interfaces;
-using OLMS.Service.Mappers;
-using OLMS.Service.Services;
-using System;
+using OLMS.Service.Middlerwares;
+using Microsoft.EntityFrameworkCore; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         .GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddAutoMapper(typeof(MapperProfile));
-builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
@@ -35,6 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
